@@ -15,3 +15,22 @@ function rollDice() {
 function isBonus(currentPos){
     return bonus.includes(currentPos);
 }
+
+//Fonction qui recharge la batterie 
+function recharge(rollResult){
+    if(live + rollResult > 7){
+        live = 7;
+    }else{
+        live += rollResult;
+    }
+}
+
+//Fonction qui décharge la batterie
+function decharge(malusBatterie){
+    if(live - malusBatterie < 0){
+        live = 0;
+    }else{
+        live -= malusBatterie;
+    }
+}
+

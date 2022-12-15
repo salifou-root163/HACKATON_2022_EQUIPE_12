@@ -14,11 +14,32 @@
 
 }
 
-.test{
+.box{
+    display: inline-block;
+    position: relative;
     width: 60px; 
     height: 60px; 
     border: 1px solid black; 
     text-align: center; 
     margin:3px; 
-    border-radius:2px
+    border-radius:2px    
 }
+
+.bonus-malus{
+    border-style: none;
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+}
+
+.monte-descente{
+    border: none;
+    position: absolute;
+    top:0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+}
+

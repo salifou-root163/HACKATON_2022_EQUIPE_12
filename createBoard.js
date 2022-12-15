@@ -25,7 +25,7 @@ function createBoard() {
 
     // Utiliser du CSS pour mettre en forme les éléments HTML et créer l'apparence du plateau
     var styleElement = document.createElement('style');
-    styleElement.textContent = '.square { display: inline-block; width: 60px; height: 60px; border: 1px solid black; text-align: center; margin:3px; border-radius:2px; position: relative; }';
+    styleElement.textContent = '.square { display: inline-block; width: 60px; height: 60px; border: 1px solid black; text-align: center; margin:3px; border-radius:2px; position: relative;  }';
     document.head.appendChild(styleElement);
 
     for (i in bonus){

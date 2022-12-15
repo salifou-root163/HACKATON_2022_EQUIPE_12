@@ -13,6 +13,8 @@
         var malus = [ ];
         var malus_pts=3;
 
+        
+
         var rollResult = rollDice();       
         var diceImage = document.getElementById("dice-image");
         
@@ -42,12 +44,39 @@
         var rollButton = document.getElementById("roll-button");
         rollButton.addEventListener("click", animateRoll);
 
-       
+        //recharge
+        function animateRoll2() {  
+            function attendreSetTimeout() {
+                return new Promise((resolve) => {                
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(() => {
+                    rollResult = rollDice();            
+                    diceImage.src = "img/dice-" + rollResult + ".png";
+                    // Appeler resolve() une seule fois, à la fin de la boucle
+                    if (i === 19) resolve(rollResult);
+                  }, i * 100); 
+                }                
+                });
+            }            
+            async function init() {            
+                let res = await attendreSetTimeout();  
+                
+                
+            }             
+            init();            
+        }
+
+        var rollButton2 = document.getElementById("recharge");
+        rollButton2.addEventListener("click", animateRoll2);
+
+
         
         // Appeler la fonction pour générer le plateau de jeu lorsque la page est chargée
 
         getDifficulte(level);
         getMonteDescente();
+
+       
 
         createBoard();
 

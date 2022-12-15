@@ -61,6 +61,7 @@
             async function init() {            
                 let res = await attendreSetTimeout();  
                 recharge(res);
+                updateBattery(live);
                 
             }             
             init();            
@@ -76,8 +77,6 @@
         getDifficulte(level);
         getMonteDescente();
 
-       
-
         createBoard();
 
         
@@ -90,6 +89,7 @@
 
             var deplacement = rollResult 
             move(lastPos);
+            updateBattery(live);
             
             if(currentPos > 60){
                 //Faire la fenêtre de fin de jeu

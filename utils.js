@@ -106,3 +106,10 @@ function move(lastPos){
 
     }
 }
+
+function updateBattery(live){
+    console.log("ping"+live);
+    document.getElementById("bater").value = live * 10 + "%";  
+    bat = document.getElementById("bat");
+    bat.value = live * 10;
+}

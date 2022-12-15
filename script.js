@@ -42,7 +42,7 @@
         var rollButton = document.getElementById("roll-button");
         rollButton.addEventListener("click", animateRoll);
 
-        
+       
         
         // Appeler la fonction pour générer le plateau de jeu lorsque la page est chargée
 
@@ -60,7 +60,7 @@
             var newPos=rollResult + currentPos
 
             var deplacement = rollResult 
-
+          
             if ( bonus.includes(newPos) ){
                 console.log("Bonus");
                 currentPos = lastPos + bonus_pts + rollResult ;
@@ -75,6 +75,9 @@
             }else{
                 currentPos = newPos;
             }
+            if(currentPos > 60){
+                //Faire la fenêtre de fin de jeu
+            }else{
 
             //currentPos = currentPos > 60 ? 60 : currentPos;
 
@@ -83,6 +86,8 @@
             document.getElementById(lastPos).style="background:none";
 
             document.getElementById(currentPos).style="   background: url('img/car.png') bottom  no-repeat;background-size:60px ;  ";
-
+            
+            }
+            
             
         }

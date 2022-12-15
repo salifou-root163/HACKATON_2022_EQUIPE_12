@@ -12,6 +12,7 @@
         var bonus_pts= 2;
         var malus = [ ];
         var malus_pts=3;
+        var signal;
 
         var rollResult = rollDice();       
         var diceImage = document.getElementById("dice-image");
@@ -30,8 +31,11 @@
                 });
             }            
             async function init() {            
-                rollResult = await attendreSetTimeout();  
+                rollResult = await attendreSetTimeout(); 
+                signal = await safeRecharge();
+                console.log(signal);
                 updateTable(rollResult);
+                
             }             
             init();            
         }

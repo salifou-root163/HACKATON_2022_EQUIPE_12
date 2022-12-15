@@ -12,6 +12,7 @@
         var bonus_pts= 2;
         var malus = [ ];
         var malus_pts=3;
+        
 
         
 
@@ -32,8 +33,12 @@
                 });
             }            
             async function init() {            
-                rollResult = await attendreSetTimeout();  
+                rollResult = await attendreSetTimeout(); 
+                const date = new Date("2022-12-15T12:50:21.817Z")
+                let signal = await safeRecharge(date);
+                console.log(signal);
                 updateTable(rollResult);
+                
             }             
             init();            
         }

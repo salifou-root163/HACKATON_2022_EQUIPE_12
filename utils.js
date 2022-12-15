@@ -34,6 +34,16 @@ function recharge(rollResult){
     }
 }
 
+//Fonction qui incrémente le tour et l'heure
+function tourPasse(rollDice){
+    tour += 1;
+    if(hour + rollDice < 24){
+        hour += rollDice;
+    }else{
+        hour = hour + rollDice - 24;
+    }
+}
+
 //Fonction qui décharge la batterie
 function decharge(malusBatterie){
     if(live - malusBatterie < 0){
@@ -92,5 +102,7 @@ function move(lastPos){
                 currentPos = lastPos + rollResult;
             }
         }
+    }else{
+
     }
 }

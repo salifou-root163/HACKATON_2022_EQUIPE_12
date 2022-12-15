@@ -27,8 +27,8 @@ function isDescente(currentPos){
 
 //Fonction qui recharge la batterie 
 function recharge(rollResult){
-    if(live + rollResult > 7){
-        live = 7;
+    if(live + rollResult > 6){
+        live = 6;
     }else{
         live += rollResult;
     }
@@ -37,10 +37,10 @@ function recharge(rollResult){
 //Fonction qui incrémente le tour et l'heure
 function tourPasse(rollDice){
     tour += 1;
-    if(hour + rollDice < 24){
-        hour += rollDice;
+    if(hour.getHours() + rollDice < 24){
+        hour.setHours(hour.getHours()+rollDice);
     }else{
-        hour = hour + rollDice - 24;
+        hour.setHours((hour.getHours()+rollDice)-24);
     }
 }
 
@@ -74,7 +74,7 @@ function move(lastPos){
     if(canMove()){
 
         if(isMonte(currentPos)){
-            decharge(3);
+            decharge(4);
             if(isBonus(currentPos)){
                 currentPos = lastPos + bonus_pts + rollResult;
             }else if(isMalus(currentPos)){

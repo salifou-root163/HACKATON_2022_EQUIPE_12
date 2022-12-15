@@ -60,21 +60,8 @@
             var newPos=rollResult + currentPos
 
             var deplacement = rollResult 
-          
-            if ( bonus.includes(newPos) ){
-                console.log("Bonus");
-                currentPos = lastPos + bonus_pts + rollResult ;
-            }else if ( malus.includes(newPos) ){
-
-                console.log("ancienne pos " + lastPos);
-                console.log("Pane " + rollResult);
-
-                currentPos = newPos - malus_pts ;
-
-                console.log("acuel pos " + currentPos);
-            }else{
-                currentPos = newPos;
-            }
+            move(lastPos);
+            
             if(currentPos > 60){
                 //Faire la fenêtre de fin de jeu
             }else{
@@ -86,7 +73,7 @@
             document.getElementById(lastPos).style="background:none";
 
             document.getElementById(currentPos).style="   background: url('img/car.png') bottom  no-repeat;background-size:60px ;  ";
-            
+            console.log(live);
             }
             
             

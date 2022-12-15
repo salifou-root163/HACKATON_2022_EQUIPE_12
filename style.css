@@ -1,3 +1,31 @@
+#roll-button{
+    border-radius: 10px;
+    border: none;
+    background: deepskyblue;
+    height: 60px;
+
+}
+
+#dice-image{
+
+    margin-left: 43px;
+}
+
+#easy{
+    background: palegreen;
+    border-radius: 10px
+}
+
+#inter{
+    background: lightyellow;
+    border-radius: 10px
+}
+
+#hard{
+    background: indianred;
+    border-radius: 10px
+}
+
 .malus{
 
 }

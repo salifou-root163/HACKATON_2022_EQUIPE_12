@@ -60,7 +60,7 @@
             }            
             async function init() {            
                 let res = await attendreSetTimeout();  
-                
+                recharge(res);
                 
             }             
             init();            

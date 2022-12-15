@@ -1,3 +1,31 @@
+#roll-button{
+    border-radius: 10px;
+    border: none;
+    background: deepskyblue;
+    height: 60px;
+
+}
+
+#dice-image{
+
+    margin-left: 43px;
+}
+
+#easy{
+    background: palegreen;
+    border-radius: 10px
+}
+
+#inter{
+    background: lightyellow;
+    border-radius: 10px
+}
+
+#hard{
+    background: indianred;
+    border-radius: 10px
+}
+
 .malus{
 
 }
@@ -14,11 +42,74 @@
 
 }
 
-.test{
+
+.box{
+    display: inline-block;
+    position: relative;
     width: 60px; 
     height: 60px; 
     border: 1px solid black; 
     text-align: center; 
     margin:3px; 
     border-radius:2px
+}
+
+.bonus-malus{
+    border-style: none;
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+}
+
+.monte-descente{
+    border: none;
+    position: absolute;
+    top:0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+}
+
+.container {
+    position: relative;
+    height: 60px;
+    top: 30px;
+    left: 100px;
+    width: 60px;
+    text-align: center;
+}
+
+.progress-bar__container {
+    width: 15%;
+    height: 190px;
+    border-radius: 2rem;
+    left: 89px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s;
+    will-change: transform;
+    box-shadow: 0 0 5px cornflowerblue;
+}
+
+.progress-bar {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    content: "";
+    background-color: cornflowerblue;
+    top:0;
+    bottom: 0;
+    left: -100%;
+    border-radius: inherit;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    color: white;
+    font-family: sans-serif;
+}
+
+.progress-bar__text {
+    display: none;
 }

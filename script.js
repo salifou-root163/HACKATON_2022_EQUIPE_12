@@ -44,6 +44,53 @@ function animateRoll() {
     init();
 }
 
+// simulation
+function simulation() {
+    let data = [];
+    data[0] = ["tour", "nbRecharge", "signal", "level", "hour"];
+    for (let i = 1; i <= 20; i++) {
+        let nbRecharge = 0;
+
+        do {
+
+            res = rollDice();
+            if (canMove()) {
+                updateTable(res);
+            }
+            else {
+                recharge(res);
+                nbRecharge++;
+            }
+
+            console.log("--------------------------------------------------------------------------------");
+            console.log(currentPos);
+
+        }
+        while (currentPos < 60)
+        data[i] = [tour, nbRecharge, signal, level, hour];
+
+    }
+    console.log(data);
+
+    // Étape 3 : convertissez votre tableau en une chaîne de caractères au format CSV
+
+    var csv = Papa.unparse(data);
+
+    // Étape 4 : téléchargez le fichier CSV
+
+    var a = document.createElement("a");
+
+    a.href = "data:text/csv;charset=utf-8," + encodeURI(csv);
+
+    a.download = "donnees.csv";
+
+    a.click();
+    return data;
+}
+
+var rollSimulate = document.getElementById("simulation");
+rollSimulate.addEventListener("click", simulation);
+
 
 
 // create an event listener to start the animation when the roll button is clicked

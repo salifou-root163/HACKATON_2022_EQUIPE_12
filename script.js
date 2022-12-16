@@ -48,6 +48,7 @@ function animateRoll() {
 function simulation() {
     let data = [];
     data[0] = ["tour", "nbRecharge", "signal", "level", "hour"];
+    
     for (let i = 1; i <= 20; i++) {
         let nbRecharge = 0;
 
@@ -67,6 +68,7 @@ function simulation() {
 
         }
         while (currentPos < 60)
+        currentPos=1;
         data[i] = [tour, nbRecharge, signal, level, hour];
 
     }

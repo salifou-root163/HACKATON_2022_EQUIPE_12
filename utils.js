@@ -6,6 +6,10 @@ function rollDice() {
     return Math.floor(Math.random() * 6) + 1;
 }
 
+//Fonction qui renvoie un booléen selon si le signal est favorable
+function estFavorable(){
+    return signal == 1;
+}
  //Fonction qui renvoie un booléen selon si la case est un malus
  function isMalus(currentPos){
     return malus.includes(currentPos);
@@ -27,11 +31,21 @@ function isDescente(currentPos){
 
 //Fonction qui recharge la batterie 
 function recharge(rollResult){
-    if(live + rollResult > 6){
-        live = 6;
+    const malus = Math.floor(rollResult/2);
+    if(estFavorable()){
+        if(live + rollResult > 6){
+            live = 6;
+        }else{
+            live += rollResult;
+        }
     }else{
-        live += rollResult;
+        if(live + malus > 6){
+            live = 6;
+        }else{
+            live += malus;
+        }
     }
+    
 }
 
 //Fonction qui incrémente le tour et l'heure
@@ -77,33 +91,60 @@ function move(lastPos){
             decharge(4);
             if(isBonus(currentPos)){
                 currentPos = lastPos + bonus_pts + rollResult;
+                if(currentPos > 60){
+                    currentPos = 60;
+                }
             }else if(isMalus(currentPos)){
                 currentPos = lastPos - malus_pts + rollResult;
+                if (currentPos < 0){
+                    currentPos = 0;
+                }
             }else{
                 currentPos = lastPos + rollResult;
+                if(currentPos > 60){
+                    currentPos = 60;
+                }
             }
 
         }else if (isDescente(currentPos)){
             decharge(1);
             if(isBonus(currentPos)){
                 currentPos = lastPos + bonus_pts + rollResult;
+                if(currentPos > 60){
+                    currentPos = 60;
+                }
             }else if(isMalus(currentPos)){
                 currentPos = lastPos - malus_pts + rollResult;
+                if (currentPos < 0){
+                    currentPos = 0;
+                }
             }else{
                 currentPos = lastPos + rollResult;
+                if(currentPos > 60){
+                    currentPos = 60;
+                }
             }    
         }else{
             decharge(2);
             if(isBonus(currentPos)){
                 currentPos = lastPos + bonus_pts + rollResult;
+                if(currentPos > 60){
+                    currentPos = 60;
+                }
             }else if(isMalus(currentPos)){
                 currentPos = lastPos - malus_pts + rollResult;
+                if (currentPos < 0){
+                    currentPos = 0;
+                }
             }else{
                 currentPos = lastPos + rollResult;
+                if(currentPos > 60){
+                    currentPos = 60;
+                }
             }
         }
     }else{
-
+        window.alert("Pas assez de batterie (Alerte temporaire en attendant de faire marcher une vraie pop up)");
     }
 }
 
@@ -112,4 +153,12 @@ function updateBattery(live){
     document.getElementById("bater").value = live * 10 + "%";  
     bat = document.getElementById("bat");
     bat.value = live * 10;
+}
+
+//Fonction de démarage de la partie grâce aux boutons
+function debutPartie(difficulte){
+    level = difficulte;
+    getDifficulte(level);
+    getMonteDescente();
+    createBoard();
 }

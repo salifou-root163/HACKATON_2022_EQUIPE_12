@@ -2,7 +2,7 @@
         var tour = 0;
         var live = 6;
         var hour = new Date("2022-12-16T00:00:00.817Z");
-
+        var signal = 0;
         var level="";
 
         var monte = [];
@@ -34,8 +34,7 @@
             }            
             async function init() {            
                 rollResult = await attendreSetTimeout(); 
-                let signal = await safeRecharge(hour);
-                console.log(signal);
+                signal = await safeRecharge(hour);
                 updateTable(rollResult);
                 
             }             
@@ -65,6 +64,8 @@
             async function init() {            
                 let res = await attendreSetTimeout();  
                 recharge(res);
+                tourPasse(rollResult);
+                console.log("Batterie : "+live);
                 
             }             
             init();            
@@ -77,12 +78,8 @@
         
         // Appeler la fonction pour générer le plateau de jeu lorsque la page est chargée
 
-        getDifficulte(level);
-        getMonteDescente();
-
-       
-
-        createBoard();
+        
+        
 
         
 
@@ -107,8 +104,9 @@
             document.getElementById(lastPos).style="background:none";
 
             document.getElementById(currentPos).style="   background: url('img/car.png') bottom  no-repeat;background-size:60px ;  ";
-            console.log(live);
+            console.log("batterie"+live);
             console.log("Heure"+hour);
+            console.log("Signal Favorable : "+estFavorable());
             }
             
             

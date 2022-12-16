@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- CSS only -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+</head>
+<body>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <div id="batt" class="card col col-md-2 shadow" style="display: none; position: absolute; right:1170px; top:200px; border: none !important;">
+        <input value="" id="bater" disabled><div class="after" style="display: none;"></div> <progress max="100" min="0" class="batr" id="bat" value=""></progress>
+    </div>
+
+    <div id="game" class="container" style="display: none;" >
+
+        <center>
+
+            <div id="1" style="  position:absolute; height: 60px; width: 60px;  left: 500px;  top: -102px;  border-radius: 0px; border:solid 1px   "  >
+                1
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car" alt="">
+            </div>
+
+            <div id="2" style="position:absolute; height: 60px; width: 60px;  left: 438px;  top: -102px;     border-radius: 0px; border:solid 1px   "  >
+                2
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="3" style="position:absolute; height: 60px; width: 60px;  left: 438px;  top: -40px;     border-radius: 0px; border:solid 1px   "  >
+                3
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="4" style="position:absolute; height: 60px; width: 60px;  left: 438px;  top: 22px;     border-radius: 0px; border:solid 1px   "  >
+                4
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+
+
+
+            <div id="5" style="position:absolute; height: 60px; width: 60px;  left: 500px;  top: 22px;     border-radius: 0px; border:solid 1px   "  >
+                5
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="6" style="position:absolute; height: 60px; width: 60px;  left: 562px;  top: 22px;     border-radius: 0px; border:solid 1px   "  >
+                6
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="7" style="position:absolute; height: 60px; width: 60px;  left: 624px;  top: 22px;     border-radius: 0px; border:solid 1px   "  >
+                7
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+
+            <div id="8" style="position:absolute; height: 60px; width: 60px;  left: 624px;  top: -40px;     border-radius: 0px; border:solid 1px   "  >
+                8
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="9" style="position:absolute; height: 60px; width: 60px;  left: 624px;  top: -102px;     border-radius: 0px; border:solid 1px   "  >
+                9
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="10" style="position:absolute; height: 60px; width: 60px;  left: 624px;  top: -164px;     border-radius: 0px; border:solid 1px   "  >
+                10
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="11" style="position:absolute; height: 60px; width: 60px;  left: 624px;  top: -226px;     border-radius: 0px; border:solid 1px   "  >
+                11
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+
+
+
+            <div id="12" style="position:absolute; height: 60px; width: 60px;  left: 562px;  top: -226px;     border-radius: 0px; border:solid 1px   "  >
+                12
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="13" style="position:absolute; height: 60px; width: 60px;  left: 500px;  top: -226px;     border-radius: 0px; border:solid 1px   "  >
+                13
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="14" style="position:absolute; height: 60px; width: 60px;  left: 438px;  top: -226px;     border-radius: 0px; border:solid 1px   "  >
+                14
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="15" style="position:absolute; height: 60px; width: 60px;  left: 376px;  top: -226px;     border-radius: 0px; border:solid 1px   "  >
+                15
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="16" style="position:absolute; height: 60px; width: 60px;  left: 314px;  top: -226px;     border-radius: 0px; border:solid 1px   "  >
+                16
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+
+
+
+            <div id="17" style="position:absolute; height: 60px; width: 60px;  left: 314px;  top: -164px;     border-radius: 0px; border:solid 1px   "  >
+                17
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="18" style="position:absolute; height: 60px; width: 60px;  left: 314px;  top: -102px;     border-radius: 0px; border:solid 1px   "  >
+                18
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="19" style="position:absolute; height: 60px; width: 60px;  left: 314px;  top: -40px;     border-radius: 0px; border:solid 1px   "  >
+                19
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="20" style="position:absolute; height: 60px; width: 60px;  left: 314px;  top: 22px;     border-radius: 0px; border:solid 1px   "  >
+                20
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="21" style="position:absolute; height: 60px; width: 60px;  left: 314px;  top: 84px;     border-radius: 0px; border:solid 1px   "  >
+                21
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="22" style="position:absolute; height: 60px; width: 60px;  left: 314px;  top: 146px;     border-radius: 0px; border:solid 1px   "  >
+                22
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+
+
+
+            <div id="23" style="position:absolute; height: 60px; width: 60px;  left: 376px;  top: 146px;     border-radius: 0px; border:solid 1px   "  >
+                23
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="24" style="position:absolute; height: 60px; width: 60px;  left: 438px;  top: 146px;     border-radius: 0px; border:solid 1px   "  >
+                24
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="25" style="position:absolute; height: 60px; width: 60px;  left: 500px;  top: 146px;     border-radius: 0px; border:solid 1px   "  >
+                25
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="26" style="position:absolute; height: 60px; width: 60px;  left: 562px;  top: 146px;     border-radius: 0px; border:solid 1px   "  >
+                26
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="27" style="position:absolute; height: 60px; width: 60px;  left: 624px;  top: 146px;     border-radius: 0px; border:solid 1px   "  >
+                27
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="28" style="position:absolute; height: 60px; width: 60px;  left: 686px;  top: 146px;     border-radius: 0px; border:solid 1px   "  >
+                28
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="29" style="position:absolute; height: 60px; width: 60px;  left: 748px;  top: 146px;     border-radius: 0px; border:solid 1px   "  >
+                29
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+
+            
+
+            <div id="30" style="position:absolute; height: 60px; width: 60px;  left: 748px;  top: 84px;     border-radius: 0px; border:solid 1px   "  >
+                30
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="31" style="position:absolute; height: 60px; width: 60px;  left: 748px;  top: 22px;     border-radius: 0px; border:solid 1px   "  >
+                31
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="32" style="position:absolute; height: 60px; width: 60px;  left: 748px;  top: -40px;     border-radius: 0px; border:solid 1px   "  >
+                32
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="33" style="position:absolute; height: 60px; width: 60px;  left: 748px;  top: -102px;     border-radius: 0px; border:solid 1px   "  >
+                33
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="34" style="position:absolute; height: 60px; width: 60px;  left: 748px;  top: -164px;     border-radius: 0px; border:solid 1px   "  >
+                34
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="35" style="position:absolute; height: 60px; width: 60px;  left: 748px;  top: -226px;     border-radius: 0px; border:solid 1px   "  >
+                35
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="36" style="position:absolute; height: 60px; width: 60px;  left: 748px;  top: -288px;     border-radius: 0px; border:solid 1px   "  >
+                36
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="37" style="position:absolute; height: 60px; width: 60px;  left: 748px;  top: -350px;     border-radius: 0px; border:solid 1px   "  >
+                37
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+
+
+
+            <div id="38" style="position:absolute; height: 60px; width: 60px;  left: 686px;  top: -350px;     border-radius: 0px; border:solid 1px   "  >
+                38
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="39" style="position:absolute; height: 60px; width: 60px;  left: 624px;  top: -350px;     border-radius: 0px; border:solid 1px   "  >
+                39
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="40" style="position:absolute; height: 60px; width: 60px;  left: 562px;  top: -350px;     border-radius: 0px; border:solid 1px   "  >
+                40
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="41" style="position:absolute; height: 60px; width: 60px;  left: 500px;  top: -350px;     border-radius: 0px; border:solid 1px   "  >
+                41
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="42" style="position:absolute; height: 60px; width: 60px;  left: 438px;  top: -350px;     border-radius: 0px; border:solid 1px   "  >
+                42
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="43" style="position:absolute; height: 60px; width: 60px;  left: 376px;  top: -350px;     border-radius: 0px; border:solid 1px   "  >
+                43
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="44" style="position:absolute; height: 60px; width: 60px;  left: 314px;  top: -350px;     border-radius: 0px; border:solid 1px   "  >
+                44
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="45" style="position:absolute; height: 60px; width: 60px;  left: 252px;  top: -350px;     border-radius: 0px; border:solid 1px   "  >
+                45
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="46" style="position:absolute; height: 60px; width: 60px;  left: 190px;  top: -350px;     border-radius: 0px; border:solid 1px   "  >
+                46
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+
+
+
+
+            
+
+            <div id="47" style="position:absolute; height: 60px; width: 60px;  left: 190px;  top: -288px;     border-radius: 0px; border:solid 1px   "  >
+                47
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="48" style="position:absolute; height: 60px; width: 60px;  left: 190px;  top: -226px;     border-radius: 0px; border:solid 1px   "  >
+                48
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="49" style="position:absolute; height: 60px; width: 60px;  left: 190px;  top: -164px;     border-radius: 0px; border:solid 1px   "  >
+                49
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="50" style="position:absolute; height: 60px; width: 60px;  left: 190px;  top: -102px;     border-radius: 0px; border:solid 1px   "  >
+                50
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="51" style="position:absolute; height: 60px; width: 60px;  left: 190px;  top: -40px;     border-radius: 0px; border:solid 1px   "  >
+                51
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="52" style="position:absolute; height: 60px; width: 60px;  left: 190px;  top: 22px;     border-radius: 0px; border:solid 1px   "  >
+                52
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="53" style="position:absolute; height: 60px; width: 60px;  left: 190px;  top: 84px;     border-radius: 0px; border:solid 1px   "  >
+                53
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="54" style="position:absolute; height: 60px; width: 60px;  left: 190px;  top: 146px;     border-radius: 0px; border:solid 1px   "  >
+                54
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="55" style="position:absolute; height: 60px; width: 60px;  left: 190px;  top: 208px;     border-radius: 0px; border:solid 1px   "  >
+                55
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="56" style="position:absolute; height: 60px; width: 60px;  left: 190px;  top: 270px;     border-radius: 0px; border:solid 1px   "  >
+                56
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+
+
+
+            
+
+            <div id="57" style="position:absolute; height: 60px; width: 60px;  left: 252px;  top: 270px;     border-radius: 0px; border:solid 1px   "  >
+                57
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="58" style="position:absolute; height: 60px; width: 60px;  left: 314px;  top: 270px;     border-radius: 0px; border:solid 1px   "  >
+                58
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="59" style="position:absolute; height: 60px; width: 60px;  left: 376px;  top: 270px;     border-radius: 0px; border:solid 1px   "  >
+                59
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            <div id="60" style="position:absolute; height: 60px; width: 60px;  left: 438px;  top: 270px;     border-radius: 0px; border:solid 1px   "  >
+                60
+                <img id="gauche" class="bonus-malus" src="img/white.png" />
+                <img id="droite" class="monte-descente" src="img/white.png" />
+                <img id="car" src="img/car.png" class="car " alt="">
+            </div>
+
+            
+
+        </center>   
+
+
+
+        
+
+    </div>
+
+    <div class=" card col col-md-2 shadow " id="rightonglet"   style="position: absolute; right:150px; top:200px" >
+        
+<div id="choice"  style="position: absolute; right:470px; top:30px">
+
+            <button id="start" >
+                Start the Game
+            </button>
+            <br>
+            <button id="easy" type="text"   > Autoroute </button>
+            <br>
+            <button id="inter" type="text"  >Ville</button>
+            <br>
+            <button id="hard" type="text"   >Montagne</button>
+            <br>
+
+</div>
+
+<div id="btns" style="display: none;">
+        <img id="dice-image" src="img/dice-1.png" style="width:100px; height:100px">
+    <div id="info" style="display:none;">
+
+        <h2 id="signal">Signal voiture électrique : </h2>
+
+        <h3 id="heure">Heure : </h3>
+
+        <h3 id="tour">Tours :  </h3>
+
+    </div>
+        <canvas id="test" ></canvas>
+
+
+
+        <button id="roll-button" >
+            Lancer le dé
+        </button>
+
+        <button id="recharge" >
+            Recharger
+        </button>
+</div>
+
+    </div>
+
+</body>
+
+<!-- JavaScript Bundle with Popper -->
+<script src="utils.js" ></script>
+<script src="fireworks.js" ></script>
+<script src="difficulte.js" ></script>
+<script src="monte_descente.js" ></script>
+<script src="createBoard.js" ></script>
+<script src="safeRecharge.js"></script>
+<script src="battery.js" ></script>
+<script src="script.js" ></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+</html>

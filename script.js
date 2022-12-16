@@ -1,161 +1,217 @@
-var currentPos = 1;     
-        var tour = 0;
-        var live = 7;
-        var hour = 30;
+var currentPos = 1;
+var tour = 0;
+var live = 7;
+var hour = new Date("2022-12-16T00:00:00.817Z");
+var signal = 0;
 
-        var monte = [ 50, 3, 23 ];
-        var descente = [ 2, 7 ];
+var level="";
 
-        var tunnel = [ 10, 20, 30 ];
-        var tunnel_pts= 2;
-        var panne = [ 5, 8, 17 ];
-        var panne_pts=3;
+var monte = [];
+var descente = [ ];
+
+var bonus = [ ];
+var bonus_pts= 2;
+var malus = [ ];
+var malus_pts=3;
 
 
-        // create a function to generate a random number for the dice roll
-        function rollDice() {
-            return Math.floor(Math.random() * 6) + 1;
-        }
-        // create a variable to hold the result of the dice roll
-        var rollResult = rollDice();       
-        var diceImage = document.getElementById("dice-image");
-        // create a function to animate the dice roll
-        function animateRoll() {  
-            function attendreSetTimeout() {
-                return new Promise((resolve) => {                
-                for (let i = 0; i < 20; i++) {
-                    setTimeout(() => {
-                    rollResult = rollDice();            
+
+
+var rollResult = rollDice();
+var diceImage = document.getElementById("dice-image");
+
+
+function animateRoll() {
+    function attendreSetTimeout() {
+        return new Promise((resolve) => {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    rollResult = rollDice();
                     diceImage.src = "img/dice-" + rollResult + ".png";
                     // Appeler resolve() une seule fois, à la fin de la boucle
                     if (i === 19) resolve(rollResult);
-                  }, i * 100); 
-                }                
-                });
-            }            
-            async function init() {            
-                rollResult = await attendreSetTimeout();  
-                updateTable(rollResult);
-            }             
-            init();
+                }, i * 100);
+            }
+        });
+    }
+    async function init() {
+        rollResult = await attendreSetTimeout();
+        date = new Date("2022-12-16T00:00:00.817Z");
+        signal = await safeRecharge(hour);
+        updateTable(rollResult);
 
-            
+    }
+    init();
+}
+
+
+
+// create an event listener to start the animation when the roll button is clicked
+var rollButton = document.getElementById("roll-button");
+rollButton.addEventListener("click", animateRoll);
+
+//recharge
+function animateRoll2() {
+    function attendreSetTimeout() {
+        return new Promise((resolve) => {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    rollResult = rollDice();
+                    diceImage.src = "img/dice-" + rollResult + ".png";
+                    // Appeler resolve() une seule fois, à la fin de la boucle
+                    if (i === 19) resolve(rollResult);
+                }, i * 100);
+            }
+        });
+    }
+    async function init() {
+        let res = await attendreSetTimeout();
+        recharge(res);
+        updateBattery(live);
+        tourPasse();
+        signal = await safeRecharge(hour);
+        document.getElementById('signal').innerHTML="Signal voiture électrique : "+displayInfoSignal();
+        document.getElementById('heure').innerHTML="Heure : "+displayInfoHeure();
+        document.getElementById('tour').innerHTML=displayInfoTour();
+
+    }
+    init();
+}
+
+var rollButton2 = document.getElementById("recharge");
+rollButton2.addEventListener("click", animateRoll2);
+
+
+
+// Appeler la fonction pour générer le plateau de jeu lorsque la page est chargée
+
+getDifficulte(level);
+getMonteDescente();
+
+createBoard();
+updateBattery(live);
+
+
+
+async function updateTable(rollResult){
+
+    var lastPos = currentPos
+
+    var newPos=rollResult + currentPos
+
+    var deplacement = rollResult
+    move(lastPos);
+    tourPasse();
+    updateBattery(live);
+    document.getElementById('signal').innerHTML="Signal voiture électrique : "+displayInfoSignal();
+    document.getElementById('heure').innerHTML="Heure : "+displayInfoHeure();
+    document.getElementById('tour').innerHTML=displayInfoTour();
+
+    if(currentPos == 60){
+        fireworks();
+    }else{
+
+        //currentPos = currentPos > 60 ? 60 : currentPos;
+
+        //currentPos = currentPos < 1 ? 1 : currentPos;
+
+        //document.getElementById(lastPos).children[2].classList.remove('active');
+        //document.getElementById(currentPos).children[2].classList.add('active');
+
+        document.getElementById(lastPos).children[2].classList.remove('active');
+
+        for (let i=lastPos; i<currentPos; i++){
+
+            var imageElement = document.getElementById(i).children[2];
+
+            //document.getElementById(i).children[2].classList.add('active');
+
+            imageElement.style.display="block";
+
+            await new Promise(resolve => {
+                setTimeout(function() {
+                    // Code à exécuter avant de résoudre la promesse
+                    imageElement.style.display="none";
+                    resolve();
+                }, 500);
+            });
         }
 
-        
-
-        // create an event listener to start the animation when the roll button is clicked
-        var rollButton = document.getElementById("roll-button");
-        rollButton.addEventListener("click", animateRoll);
-
-        
-
-       // Déclaration des variables
-
-       
-
-        function createBoard() {
-            // Récupérer l'élément HTML qui contiendra le plateau de jeu
-            var boardElement = document.getElementById('board');        
-            // Utiliser des éléments HTML pour créer les cases du plateau
-            // et les disposer dans le bon ordre pour représenter le jeu de l'oie
-            for (var i = 60; i >= 1; i--) {
-            var squareElement = document.createElement('div');
-            squareElement.classList.add('square');
-            squareElement.textContent = i;
-            squareElement.id=i;      
-            boardElement.appendChild(squareElement);
-            }
-        
-            // Utiliser du CSS pour mettre en forme les éléments HTML et créer l'apparence du plateau
-            var styleElement = document.createElement('style');
-            styleElement.textContent = '.square { display: inline-block; width: 60px; height: 60px; border: 1px solid black; text-align: center; margin:3px; border-radius:2px }';
-            document.head.appendChild(styleElement);
-
-            for (i in tunnel){
-                document.getElementById(tunnel[i]).style=" border: solid 2px green ";
-            }
-
-            for (i in panne){                
-                document.getElementById(panne[i]).style=" border: solid 2px red ";
-            }
-
-            for (i in monte){                
-                document.getElementById(monte[i]).style="  background: url('img/monte.png') top left no-repeat;background-size:15px ";
-            }
-
-            for (i in descente){                
-                document.getElementById(descente[i]).style="  background: url('img/descente.jpg') top left no-repeat;background-size:20px ";
-            }
-        }
-        
-        // Appeler la fonction pour générer le plateau de jeu lorsque la page est chargée
-
-        createBoard();
-
-        function feu(){
-            // Créez un canvas en HTML et donnez-lui un identifiant
-            
-
-            // Dans votre code JavaScript, récupérez le canvas et le contexte de dessin
-            var canvas = document.getElementById("test");
-            var ctx = canvas.getContext("2d");
-
-            // Définissez les couleurs que vous souhaitez utiliser pour les feux d'artifice
-            var colors = ["#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#FF00FF", "#00FFFF"];
-
-            // Définissez la fonction qui va dessiner les feux d'artifice
-            function drawFirework() {
-            // Choisissez une position aléatoire sur le canvas pour lancer le feu d'artifice
-            var x = Math.random() * canvas.width;
-            var y = Math.random() * canvas.height;
-
-            // Choisissez une couleur aléatoire pour le feu d'artifice
-            var color = colors[Math.floor(Math.random() * colors.length)];
-
-            // Dessinez un cercle à la position choisie avec la couleur choisie
-            ctx.beginPath();
-            ctx.arc(x, y, 2, 0, Math.PI * 2);
-            ctx.fillStyle = color;
-            ctx.fill();
-            }
-
-            // Utilisez une boucle pour dessiner les feux d'artifice à intervalles réguliers
-            setInterval(drawFirework, 100);
+        document.getElementById(currentPos).children[2].classList.add('active');
 
 
+        console.log("signal : "+signal+" Heure : "+hour );
+
+
+
+        //document.getElementById(currentPos).style="   background: url('img/car.png') bottom  no-repeat;background-size:60px ;  ";
+
+    }
+
+
+}
+
+
+
+
+function easy(){
+    level='easy';
+    var el = document.getElementById('easy');
+    el.classList.add('selected-level');
+    var a =document.getElementById('inter');
+    var b =document.getElementById('hard');
+    a.classList.remove('selected-level');
+    b.classList.remove('selected-level');
+}
+
+function inter(){
+    level='inter';
+    var el = document.getElementById('inter');
+    el.classList.add('selected-level');
+    var a =document.getElementById('easy');
+    var b =document.getElementById('hard');
+    a.classList.remove('selected-level');
+    b.classList.remove('selected-level');
+}
+
+function hard(){
+    level='hard';
+    var el = document.getElementById('hard');
+    el.classList.add('selected-level');
+    var a =document.getElementById('inter');
+    var b =document.getElementById('easy');
+    a.classList.remove('selected-level');
+    a.classList.remove('selected-level');
+}
+
+        function hard(){
+            level='hard';
+            var el = document.getElementById('hard');            
+            el.classList.add('selected-level');
+            var a =document.getElementById('inter'); 
+            var b =document.getElementById('easy'); 
+            a.classList.remove('selected-level');
+            a.classList.remove('selected-level');
         }
 
-        function updateTable(rollResult){
-            //feu();
-            var lastPos = currentPos
+        function start(){
+            console.log(level);
 
-            var newPos=rollResult + currentPos
-
-            var deplacement = rollResult 
-
-            if ( tunnel.includes(newPos) ){
-                console.log("Bonus");
-                currentPos = lastPos + tunnel_pts + rollResult ;
-            }else if ( panne.includes(newPos) ){
-
-                console.log("ancienne pos " + lastPos);
-                console.log("Pane " + rollResult);
-
-                currentPos = newPos - panne_pts ;
-
-                console.log("acuel pos " + currentPos);
-            }else{
-                currentPos = newPos;
-            }
-
-            //currentPos = currentPos > 60 ? 60 : currentPos;
-
-            //currentPos = currentPos < 1 ? 1 : currentPos;
-
-            document.getElementById(lastPos).style="background:none";
-
-            document.getElementById(currentPos).style="   background: url('img/car.png') bottom  no-repeat;background-size:60px ;  ";
-
-            
+            document.getElementById('btns').style.display="block";
+            document.getElementById('game').style.display="block";
+            document.getElementById('choice').style.display="none";
+            document.getElementById('info').style.display="block"
+            document.getElementById('batt').style.display="block";
         }
+
+        var boutonEasy = document.getElementById("easy");
+        boutonEasy.addEventListener("click", easy);
+
+        var boutonInter = document.getElementById("inter");
+        boutonInter.addEventListener("click", inter);
+
+        var boutonHard = document.getElementById("hard");
+        boutonHard.addEventListener("click", hard);
+
+        var boutonStart = document.getElementById("start");
+        boutonStart.addEventListener("click", start);

@@ -5,25 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
     <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+        
+    
 </head>
 <body>
-
+    
     <div class="container">
         <br><br><br>
-        <div class=" card col col-md-6" >
-            <center>Play stats</center>
-            <ul>
-                <li>nombre de tour</li>
-                <li>niveau de batterie</li>
-                <li>temps de jeu</li>
-                <li>tunnel</li>
-                <li>depannage</li>
-            </ul>
-        </div>
+        
     
         <div class="row">
+
+
+            <div class="card col col-md-2 shadow">
+                
+                <input value="" id="bater" disabled><div class="after"></div>  <progress max="100" min="0" class="batr" id="bat" value=""></progress>
+            </div>
+
+            <br>
             <div class=" card col col-md-6 shadow  ">      
                 <center>
                     <div id="board"></div>
@@ -33,19 +38,60 @@
             </div>
     
             <div class=" card col col-md-2 shadow " >
-                <img id="dice-image" src="img/dice-1.png" style="width:100px; height:100px">
+                <br>
                 <button id="roll-button" >
-                    click me
+                    Start the Game
                 </button>
+                <br>
+                <button id="easy" >
+                    Easy
+                </button>
+                <br>
+                <button id="inter" >
+                    Inter
+                </button>
+                <br>
+                <button id="hard" >
+                    Hard
+                </button>
+                <br>
+                <img id="dice-image" src="img/dice-1.png" style="width:100px; height:100px">
+
                 <canvas id="test" ></canvas>
+
+                <button id="recharge" >
+                    Recharger
+                </button>
             </div>
+            
         </div>
+
+        </div>
+
+        <canvas id="c" ></canvas>
+
     </div> 
 
-    <script src ="scripts.js"> </script>
+    <script>
+        // Créer un élément canvas pour dessiner la batterie
+        
+
+    </script>
+
+    
+
 </body>
 <!-- JavaScript Bundle with Popper -->
+    <script src="utils.js" ></script>
+    <script src="fireworks.js" ></script>
+    <script src="difficulte.js" ></script>
+    <script src="monte_descente.js" ></script>
+    <script src="createBoard.js" ></script>
+    <script src="safeRecharge.js"></script>
+    <script src="battery.js" ></script>
+    <script src="script.js" ></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 </html>
